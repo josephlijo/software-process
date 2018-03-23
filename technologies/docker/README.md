@@ -1,12 +1,11 @@
-## What is Docker?
-
+# What is Docker?
 - Docker is a company which created the open-source project 'docker'
 - We create our application in our favorite language which runs on our supported operating system. Now, we want this application to be deployed into a different machine.  
 What do we need to take care of in this case? Making sure that the OS is supported, making sure that the prerequisite software is installed in that OS, etc.
 - Docker is a cute way to isolate our application development from underlying system and application prerequisite.
 - Docker lets us do this by containerizing our application and telling docker via configuration on what our applications system requirements are. Doing so, we can easily take our application into different 'machines' (in docker terms, it is an image).
 
-### In essence
+## Docker : A high-level overview
 - Docker is a technology for automating the build, and deployment of applications
 - Docker allows us to package our application into a standardized unit - called, 'container'
 - Containers are portable, and self-sufficient
@@ -19,4 +18,9 @@ What do we need to take care of in this case? Making sure that the OS is support
 
 ## How docker does this automation on platform neutral way?
 - Docker does so by making itself work on top of the operating system kernel
-- 
+
+## What are containers?
+
+## Docker Hub and Container registries
+
+## Container orchestration
