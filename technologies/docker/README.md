@@ -26,16 +26,22 @@ What do we need to take care of in this case? Making sure that the OS is support
 - Each container can run an entire application or service.
 - Another advantage of container is that we can scale-out our application, by instantiating an image (creating a container) on the host OS.
 
-## Docker Container vs. Image vs. Host vs. Daemon vs. Client vs. Store (Registry)
+## Docker Container vs. Image vs. Host vs. Daemon vs. Client vs. Registry
 - **Image**: The file system and configuration of our application. Instantiating an image creates a container.
 - **Container**: Running instances of Docker images. Containers run the actual application. Container includes an application and all its dependencies.
 - **Host**: Is any machine that is running the `Docker daemon` service.
 - **Docker daemon**: Is a background service running on the host that manages building, running, and distributing docker containers.
 - **Docker client**: The CLI tooling that allows us to interact with the Docker Daemon.
-- **Store**: Registry which store docker images.
+- **Registry**: Stores the docker images. Docker manages a public registry via [Docker Hub](https://hub.docker.com/)  
+
+[Docker Terminology](https://docs.microsoft.com/en-us/dotnet/standard/containerized-lifecycle-architecture/docker-terminology) from Microsoft Docs  
+
+[Containers, Images, and Registries](https://docs.microsoft.com/en-us/dotnet/standard/containerized-lifecycle-architecture/docker-containers-images-and-registries) from Microsoft Docs  
 
 ## Docker architecture
-![Docker Architecture](https://docs.docker.com/engine/images/architecture.svg "Docker Architecture (Source: docs.docker.com")
+![Docker Architecture](https://docs.docker.com/engine/images/architecture.svg "Docker Architecture (Source: docs.docker.com")  
+
+[Docker Architecture](https://docs.docker.com/engine/docker-overview/#docker-architecture) from Docker docs
 
 ## VM's vs. Docker containers
 ![VM's vs. Docker containers](https://docs.microsoft.com/en-us/dotnet/standard/containerized-lifecycle-architecture/media/image3.png "Comparison of traditional VMs to Docker containers (Source: https://docs.microsoft.com/en-us/dotnet/standard/containerized-lifecycle-architecture/what-is-docker)")
