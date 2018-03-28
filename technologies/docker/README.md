@@ -3,7 +3,7 @@
 - We create our application in our favorite language which runs on our supported operating system. Now, we want this application to be deployed into a different machine.  
 What do we need to take care of in this case? Making sure that the OS is supported, making sure that the prerequisite software is installed in that OS, etc.
 - Docker is a cute way to isolate our application development from underlying system and application prerequisite.
-- Docker lets us do this by containerizing our application and telling docker via configuration on what our applications system requirements are. Doing so, we can easily take our application into different 'machines' (in docker terms, it is an image).
+- Docker lets us do this by containerizing our application and telling docker via configuration on what our applications system requirements are. Doing so, we can easily take our application into different 'machines'.
 
 ## Docker : A high-level overview
 - Docker is a technology for automating the build, and deployment of applications
@@ -20,7 +20,18 @@ What do we need to take care of in this case? Making sure that the OS is support
 - Docker does so by making itself work on top of the operating system kernel
 
 ## What are containers?
+- Containerization is an approach to software development in which an application or service, its dependencies, and its configuration are packaged together as a container image.
+- We can then test the containerized application as a unit and deploy it as a container image instance to the host operating system.
+- Similar to the shipping industry terminology of containers to move goods via different mediums like train, ship or truck regardless of the cargo within them; the software containers are a standard unit of software that can contain different code and dependencies.
+- Placing software into containers makes it possible for developers and IT professionals to deploy those containers across environments with little or no modification.
+- Containers also isolate applications in a shared operation system.
+- Containerized applications run on top of the container host, which in turn runs on the OS.
+- They have less footprint than VM images.
+- Each container can run an entire application or service.
 
 ## Docker Hub and Container registries
 
 ## Container orchestration
+
+### References and Credits
+- [Containerized Lifecycle Architecture](https://docs.microsoft.com/en-us/dotnet/standard/containerized-lifecycle-architecture/)
