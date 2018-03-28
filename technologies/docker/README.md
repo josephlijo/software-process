@@ -35,8 +35,10 @@ What do we need to take care of in this case? Making sure that the OS is support
 - **Store**: Registry which store docker images.
 
 ## Docker architecture
-
 ![Docker Architecture](https://docs.docker.com/engine/images/architecture.svg "Docker Architecture (Source: docs.docker.com")
+
+## VM's vs. Docker containers
+![VM's vs. Docker containers](https://docs.microsoft.com/en-us/dotnet/standard/containerized-lifecycle-architecture/media/image3.png "Comparison of traditional VMs to Docker containers (Source: https://docs.microsoft.com/en-us/dotnet/standard/containerized-lifecycle-architecture/what-is-docker)")
 
 ## Docker Hub and Container registries
 
