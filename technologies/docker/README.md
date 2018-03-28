@@ -1,20 +1,16 @@
-# What is Docker?
-- Docker is a company which created the open-source project 'docker'
+# Why Docker?
 - We create our application in our favorite language which runs on our supported operating system. Now, we want this application to be deployed into a different machine.  
 What do we need to take care of in this case? Making sure that the OS is supported, making sure that the prerequisite software is installed in that OS, etc.
 - Docker is a cute way to isolate our application development from underlying system and application prerequisite.
 - Docker lets us do this by containerizing our application and telling docker via configuration on what our applications system requirements are. Doing so, we can easily take our application into different 'machines'.
 
-## Docker : A high-level overview
+## What is Docker : A high-level overview
+- Docker is a company which created the open-source project 'docker'
 - Docker is a technology for automating the build, and deployment of applications
-- Docker allows us to package our application into a standardized unit - called, 'container'
+- Docker does this by allowing us to package our application into a standardized unit - called, 'container'
 - Containers are portable, and self-sufficient
-- Container is a stripped down version of an Operating system
 - These 'containers' can run on the cloud or on-premises and on different operating systems
 - Docker helps us not to worry about the underlying software (OS) where our software runs
-- We can get our Node.js or .NET or Java application or a combination of a all application into a container
-- Our package - the container - should now run on top of the OS (or a combination of OS + other software) - and that software is called the image.
-- In essence - docker can be used to build, deploy, and run containers for software applications which can run on different images
 
 ## How docker does this automation on platform neutral way?
 - Docker does so by making itself work on top of the operating system kernel
@@ -28,10 +24,24 @@ What do we need to take care of in this case? Making sure that the OS is support
 - Containerized applications run on top of the container host, which in turn runs on the OS.
 - They have less footprint than VM images.
 - Each container can run an entire application or service.
+- Another advantage of container is that we can scale-out our application, by instantiating an image (creating a container) on the host OS.
+
+## Docker Container vs. Image vs. Host vs. Daemon vs. Client vs. Store (Registry)
+- **Image**: The file system and configuration of our application. Instantiating an image creates a container.
+- **Container**: Running instances of Docker images. Containers run the actual application. Container includes an application and all its dependencies.
+- **Host**: Is any machine that is running the `Docker daemon` service.
+- **Docker daemon**: Is a background service running on the host that manages building, running, and distributing docker containers.
+- **Docker client**: The CLI tooling that allows us to interact with the Docker Daemon.
+- **Store**: Registry which store docker images.
+
+## Docker architecture
+
+![Docker Architecture](https://docs.docker.com/engine/images/architecture.svg "Docker Architecture (Source: docs.docker.com")
 
 ## Docker Hub and Container registries
 
 ## Container orchestration
 
 ### References and Credits
+- [Docker Architecture](https://docs.docker.com/engine/docker-overview/#docker-architecture)
 - [Containerized Lifecycle Architecture](https://docs.microsoft.com/en-us/dotnet/standard/containerized-lifecycle-architecture/)
