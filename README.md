@@ -7,3 +7,12 @@ An effort to learn and gather software development process, principles, practice
 
 ## CI/CD - Continuous Integration, Deployment, Delivery
 
+## Technologies
+
+## Docker
+- [Docker basics](./technologies/docker/docker-basics)
+- [Simple Dotnet Core console app on Container](./technologies/docker/docker-dotnetcoreapp)
+
+
+
+
