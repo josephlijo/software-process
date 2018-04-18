@@ -70,6 +70,11 @@ This will run the container and return the results:
 ```
 Hello World!
 ```
+- We can see the new image by running `docker images`
+```
+REPOSITORY             TAG                   IMAGE ID            CREATED             SIZE
+console-app-dev        latest                8204285e7838        9 minutes ago       1.8GB
+```
 
 ## References
 [Docker basics with .NET Core](https://docs.microsoft.com/en-us/dotnet/core/docker/docker-basics-dotnet-core)
