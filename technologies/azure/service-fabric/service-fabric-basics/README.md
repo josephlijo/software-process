@@ -38,3 +38,21 @@
 - This function in turn becomes a micro-micro service
 - We don't need to provision a server for this solution - and hence it is a `serverless technology`
 - It can be thought of as an event-driven observer pattern
+
+## Programming Models in Azure Service Fabric
+- Three main approaches to create a Microservice in Service Fabric
+    - **Reliable Services**
+        - Simliar to a windows service or Linux daemon application
+        - Think of them as a Console application and we are not required to use Service Fabric tools
+        - There are two types - **Stateless** and **Stateful** 
+        - Stateless are more of like console applications in look and beahavior
+        - Stateful have their own transactional replicated storage
+    - **Reliable Actors**
+        - Implementation of [`Virtual Actor pattern`](https://www.microsoft.com/en-us/research/project/orleans-virtual-actors/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fprojects%2Forleans%2F)
+        - Built on top of **Stateful reliable services**
+    - **Guest Executables**
+        - Let's any application written in any languages to work with Service Fabric as a service without modifying them
+        - Treated as **stateless services**
+        - Useful for deploying an existing executable to Service Fabric
+
+## Reliable Services

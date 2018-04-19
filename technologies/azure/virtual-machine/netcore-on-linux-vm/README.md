@@ -25,10 +25,6 @@ echo xfce4-session >~/.xsession
 ```
 - Restart `xrdp` for the changes to take effect: `sudo service xrdp restart`
 
-## Installing and running dotnet core
-- See instruction to [install dotnet core](https://www.microsoft.com/net/learn/get-started/linux/ubuntu17-10)
-- 
-
 ## Set up a local user account password
 - If you have already setup password when you created the machine, then skip this step. Otherwise,
 ```
@@ -44,6 +40,9 @@ If Azure CLI is not installed, it can be done via `sudo apt install azure-cli`
 
 ## RDP to your VM
 - Choose the RDP client and connect to the IP address or DNS name, and enter username and password to connect.
+
+## Installing and running dotnet core
+- See instruction to [install dotnet core](https://www.microsoft.com/net/learn/get-started/linux/ubuntu17-10)
 
 ### References
 - [Use remote desktop in Ubuntu](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/use-remote-desktop)
