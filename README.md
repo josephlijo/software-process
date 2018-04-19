@@ -13,6 +13,8 @@ An effort to learn and gather software development process, principles, practice
 - [Docker basics](./technologies/docker/docker-basics)
 - [Simple Dotnet Core console app on Container](./technologies/docker/docker-dotnetcoreapp)
 
-
+## Azure
+- [Service Fabric basics](./technologies/azure/service-fabric/service-fabric-basics)
+- [Dotnet Core on Linux VM](./technologies/azure/virtual-machine/netcore-on-linux-vm)
 
 
