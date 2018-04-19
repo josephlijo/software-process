@@ -17,4 +17,6 @@ An effort to learn and gather software development process, principles, practice
 - [Service Fabric basics](./technologies/azure/service-fabric/service-fabric-basics)
 - [Dotnet Core on Linux VM](./technologies/azure/virtual-machine/netcore-on-linux-vm)
 
+## Languages
 
+- [Java and C# Comparison](./languages/comparison/java-csharp)
