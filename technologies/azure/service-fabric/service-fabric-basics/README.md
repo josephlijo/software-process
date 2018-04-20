@@ -1,4 +1,4 @@
-# Azure Service Fabric
+# Azure Service Fabric - Basic concepts
 
 ## What is it?
 - Azure Service Fabric is focused on `Microservice` applications
