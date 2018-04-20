@@ -36,13 +36,19 @@ sudo passwd pass@word
 ```
 az vm open-port --resource-group your-resource-group-name --name your-vm-name --port 3389
 ```
-If Azure CLI is not installed, it can be done via `sudo apt install azure-cli`
+- If Azure CLI is not installed, it can be done via `sudo apt install azure-cli`
+- There is **chance that the Azure CLI in Ubuntu is an older version**; to install the latest, please use [this instruction](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
 
 ## RDP to your VM
 - Choose the RDP client and connect to the IP address or DNS name, and enter username and password to connect.
 
+![Azure Linux VM RDP](../images/Linux_machine_rdp.png)
+
 ## Installing and running dotnet core
 - See instruction to [install dotnet core](https://www.microsoft.com/net/learn/get-started/linux/ubuntu17-10)
+- After installation create a console app using `dotnet new console` in the *directory* of choice
+- Build `dotnet build` and run `dotnet run`
 
 ### References
 - [Use remote desktop in Ubuntu](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/use-remote-desktop)
+- [Install latest Azure CLI in Ubuntu](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
