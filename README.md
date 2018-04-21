@@ -19,4 +19,4 @@ An effort to learn and gather software development process, principles, practice
 
 ## Languages
 
-- [Java and C# Comparison](./languages/comparison/java-csharp)
+- [Java and C# Comparison](./languages/java-csharp)
