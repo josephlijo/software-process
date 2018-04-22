@@ -22,15 +22,22 @@
 
 ## Server, Containers, and Components
 
-![Java EE Server and Containers](./images/overview-serverAndContainers.gif)
+- `Java EE server`, the runtime provides underlying services in the form of `container` for every component type
+- `Containers` are the interface between a `component` and the low-level platform specific functionality that the component needs. 
+
+![Java EE Server and Containers](./images/overview-serverAndContainers.gif)  
 Credits: https://docs.oracle.com/javaee/5/tutorial/doc/bnabo.html
+
+- **Java EE server**: The runtime portion of a Java EE product. A Java EE server provides EJB and web containers.
+- **Enterprise JavaBeans (EJB) container**: Manages the execution of enterprise beans for Java EE applications. Enterprise beans and their container run on the Java EE server.
+- **Web container**: Manages the execution of JSP page and servlet components for Java EE applications. Web components and their container run on the Java EE server.
+- **Application client container**: Manages the execution of application client components. Application clients and their container run on the client.
+- **Applet container**: Manages the execution of applets. Consists of a web browser and Java Plug-in running on the client together.
+
 
 ### Java EE Programming model
 - Business logic is organized into reusable `components`
-- `Java EE server` provides underlying services in the form of `container` for every component type
-- `Containers` are the interface between a `component` and the low-level platform specific functionality that the component needs. 
 - Convention over Configuration - Container takes default decisions
-- Container?
 
 ### References
 - [Java EE Containers](https://docs.oracle.com/javaee/5/tutorial/doc/bnabo.html)
