@@ -1,6 +1,4 @@
-# Java and C# language comparison
-
-## Java
+# Java
 - The Java technology is both a **programming language** and **a platform**
 - Java programming language
     - Is Object-oriented
@@ -20,22 +18,19 @@
 - Java SE, ME, and FX applications are often clients of Java EE applications
 - Enterprise applications are applications which are multi-tiered, scalable, reliable and secure - Java EE is used to create such applications. 
 
-## C#
+## Java EE 
 
-## Operating System support
+## Server, Containers, and Components
 
-## Types of applications that can be developed
+![Java EE Server and Containers](./images/overview-serverAndContainers.gif)
+Credits: https://docs.oracle.com/javaee/5/tutorial/doc/bnabo.html
 
-## Language versions
+### Java EE Programming model
+- Business logic is organized into reusable `components`
+- `Java EE server` provides underlying services in the form of `container` for every component type
+- `Containers` are the interface between a `component` and the low-level platform specific functionality that the component needs. 
+- Convention over Configuration - Container takes default decisions
+- Container?
 
-## The compilation process
-
-## Types
-
-## Data structures
-
-## Namespacing
-
-## OOP, Functional programming
-
-## Threading and Process
+### References
+- [Java EE Containers](https://docs.oracle.com/javaee/5/tutorial/doc/bnabo.html)
