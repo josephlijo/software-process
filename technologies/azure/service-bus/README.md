@@ -10,12 +10,12 @@
 ## Bus vs. Queue (Message Bus vs. Message Queue) - the difference
 - **Message bus** lets different applications to communicate with each other *through a shared set of interfaces* via **Pub/Sub mechanism**
 ```
-		||
-		||	App B
-App A	||
-		||
-		||	App C
-		||
+       ||
+       ||	App B
+App A  ||
+       ||
+       ||	App C
+       ||
 	Message Bus
 ```
 - In **Message Queue**, two or more process share the same *pipe of communication*, *often in* FIFO model which means once a recipient takes the message, it is dequed, *Enque, Deque mechanism*
@@ -24,7 +24,7 @@ App A	||
 App A						App 1
 
 App B   -------------------
-		-------------------	App 2
+        -------------------	App 2
 
 App C						App 3
 ```
