@@ -32,3 +32,6 @@ App C						App 3
 ## Examples of Bus and Queue implementations
 
 ## Azure Service Bus 
+
+### References
+- [Azure Service Bus fundamentals](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-fundamentals-hybrid-solutions)
