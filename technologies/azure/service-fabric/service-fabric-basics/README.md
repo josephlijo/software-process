@@ -1,9 +1,16 @@
 # Azure Service Fabric - Basic concepts
 
-## What is it?
-- Azure Service Fabric is focused on `Microservice` applications
-- It is for **Microservice applications running on containers** (+ also supports process)
-- It is a **platform to package, deploy, and manage microservices and containers**
+- Is Microsoft's **container orchestrator** for deploying microservices across a cluster of machines.
+- Azure Service Fabric is a **distributed systems platform**
+  - for deploying, and managing scalable and reliable microservices and containers.
+- These microservices run on a shared pool of machines, known as **cluster**
+- Service fabric is a **microservices platform** that gives every microservice (or container) a *unique name* that can either be *stateless or stateful*.
+- It **hosts microservices inside containers** that are deployed and activated across the **Service Fabric Cluster**
+- Apps build on Azure Service Fabric:
+  - Skype for Business
+  - Azure SQL Database
+  - Cortana
+  - Microsoft Power BI
 - Idea is to ease out the **infrastructure problems** and focus on making the microservice app **scalable, reliable, and manageable**
 
 ## What are the current options for building Microservice applications on Azure?
@@ -56,3 +63,9 @@
         - Useful for deploying an existing executable to Service Fabric
 
 ## Reliable Services
+- In Azure Service fabric terminology, **any service which runs on the background is a reliable service**
+
+
+### References
+- [.NET application in Azure Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-dotnet)
+- [Try Service Fabric - using Party Clusters](https://try.servicefabric.azure.com/)
