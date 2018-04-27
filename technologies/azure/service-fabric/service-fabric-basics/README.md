@@ -3,7 +3,7 @@
 ## What is it?
 - Azure Service Fabric is focused on `Microservice` applications
 - It is for **Microservice applications running on containers** (+ also supports process)
-- It is a **platform to package, deploy, and manage microservices and containers** 
+- It is a **platform to package, deploy, and manage microservices and containers**
 - Idea is to ease out the **infrastructure problems** and focus on making the microservice app **scalable, reliable, and manageable**
 
 ## What are the current options for building Microservice applications on Azure?
@@ -12,7 +12,7 @@
 - Microsoft's implementation of open-source container technologies based on `docker`
 - Helps automate the running of containers in Azure cloud  
 - Docker is a container technology alone, but there are more to it - like managing containers in terms of deployment, scaling, healing, configuration, storage, networking, etc. which makes the application useful.
-- This leads us to the need of **container orchestrator** 
+- This leads us to the need of **container orchestrator**
     - Popular Container Orchestrators
         - Docker Swarm
         - DC/OS
@@ -28,7 +28,7 @@
     - Telemetry
     - Provision and upgrade
     - Testing microservices locally
-    - Manging downtimes
+    - Managing downtimes
     - Scaling in and out
 - It is another step forward in `Microservice design`
 
@@ -42,10 +42,10 @@
 ## Programming Models in Azure Service Fabric
 - Three main approaches to create a Microservice in Service Fabric
     - **Reliable Services**
-        - Simliar to a windows service or Linux daemon application
+        - Similar to a windows service or Linux daemon application
         - Think of them as a Console application and we are not required to use Service Fabric tools
-        - There are two types - **Stateless** and **Stateful** 
-        - Stateless are more of like console applications in look and beahavior
+        - There are two types - **Stateless** and **Stateful**
+        - Stateless are more of like console applications in look and behavior
         - Stateful have their own transactional replicated storage
     - **Reliable Actors**
         - Implementation of [`Virtual Actor pattern`](https://www.microsoft.com/en-us/research/project/orleans-virtual-actors/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fprojects%2Forleans%2F)
