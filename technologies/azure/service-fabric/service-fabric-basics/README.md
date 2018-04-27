@@ -76,11 +76,12 @@
 
 ## Reliable Services
 - **Is a programming model** in Azure Service Fabric
+- Two types of **reliable services** are: **stateful reliable service** and **stateless reliable service**
 - This model helps make the application:
-  - **Reliable**:
-  - **Available**:
-  - **Scalable**:
-  - **Consistent**: 
+  - **Reliable**: Service stays up even in unreliable situation or network issues. For *stateful service*, the state is preserved.
+  - **Available**: Your service is *reachable and responsive*. Service fabric maintains your desired number of running copies.
+  - **Scalable**: No tight coupling to hardware service instances can be increased / decreased based on needs.
+  - **Consistent**: Information stored in Service fabric is consistent.
 - In Azure Service fabric terminology, **any service which runs on the background is a reliable service**
 
 
