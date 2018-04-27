@@ -46,6 +46,18 @@
 - We don't need to provision a server for this solution - and hence it is a `serverless technology`
 - It can be thought of as an event-driven observer pattern
 
+## Stateful and Stateless microservices
+- Stateless microservice do not maintain a mutable state outside a request and its response from the service. Example of such services:
+  - Protocol gateways
+  - Web proxies
+  - Azure cloud services worker roles
+- Stateful microservices maintain a mutable state beyond the request and its response. For example,
+   - user accounts
+   - databases
+   - devices
+   - shopping carts
+   - Queues
+
 ## Programming Models in Azure Service Fabric
 - Three main approaches to create a Microservice in Service Fabric
     - **Reliable Services**
@@ -63,9 +75,16 @@
         - Useful for deploying an existing executable to Service Fabric
 
 ## Reliable Services
+- **Is a programming model** in Azure Service Fabric
+- This model helps make the application:
+  - **Reliable**:
+  - **Available**:
+  - **Scalable**:
+  - **Consistent**: 
 - In Azure Service fabric terminology, **any service which runs on the background is a reliable service**
 
 
 ### References
 - [.NET application in Azure Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-dotnet)
 - [Try Service Fabric - using Party Clusters](https://try.servicefabric.azure.com/)
+- [Reliable Services](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-reliable-services-introduction)
