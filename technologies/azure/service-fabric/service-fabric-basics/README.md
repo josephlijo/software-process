@@ -82,9 +82,16 @@
   - **Available**: Your service is *reachable and responsive*. Service fabric maintains your desired number of running copies.
   - **Scalable**: No tight coupling to hardware service instances can be increased / decreased based on needs.
   - **Consistent**: Information stored in Service fabric is consistent.
+- **Web API is a stateless service** in Azure Service fabric terminology as it acts as a **facade** to the front-end system in most cases ??
 - In Azure Service fabric terminology, **any service which runs on the background is a reliable service**
+- Why write a reliable service?
+  - if our application is a microservice
+  - it has scaling, health monitoring, service discovery (to discover other services) concerns to be taken care of
+  - we can use the Azure Service Fabric's built-in **Pluggable Communication Model** whether it is HTTP, TCP, Web sockets, etc.
+  - access to **reliable storage**. See [reliable collections](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-reliable-services-reliable-collections)  
 
-
+      ![Reliable Collections](https://docs.microsoft.com/en-us/azure/service-fabric/media/service-fabric-reliable-services-reliable-collections/reliablecollectionsevolution.png)  
+      
 ### References
 - [.NET application in Azure Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-dotnet)
 - [Try Service Fabric - using Party Clusters](https://try.servicefabric.azure.com/)
