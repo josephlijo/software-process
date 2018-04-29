@@ -131,11 +131,66 @@
         After the listeners close, the service object itself is destructed.
 ```
 
-![Startup lifecyle - Credits: Understanding the Programming Models of Azure Service Fabric by Ivan Gavryliuk, Pluralsight](./images/azure_service_fabric_startup.PNG)
+![Startup lifecyle - Credits: Understanding the Programming Models of Azure Service Fabric by Ivan Gavryliuk, Pluralsight](./images/azure_service_fabric_startup.PNG)  
+Startup lifecyle - Credits: Understanding the Programming Models of Azure Service Fabric by Ivan Gavryliuk, Pluralsight
 
-![Shutdown lifecyle - Credits: Understanding the Programming Models of Azure Service Fabric by Ivan Gavryliuk, Pluralsight](./images/azure_service_fabric_shutdown.PNG)
+![Shutdown lifecyle - Credits: Understanding the Programming Models of Azure Service Fabric by Ivan Gavryliuk, Pluralsight](./images/azure_service_fabric_shutdown.PNG)  
+Shutdown lifecyle - Credits: Understanding the Programming Models of Azure Service Fabric by Ivan Gavryliuk
 
 - **Always respond to the cancellationToken event as possible** - otherwise service fabric will report your service as unhealthy as it didn't shutdown properly
+
+### Persisting data and Azure Service Fabric Stateful Service
+- If we have to persist the data, there are many approaches, single database for different microservice, different database for each microservice - each of which has problems like **single point of failure in case of single database**, **managing data across different microservices and cost** etc.
+- We can alternatively have the service and the data to be kept with the service itself in **local disk on the same machine** - this is what Stateful service helps us with **State API**.
+- Every time you do a write, the **write operation gets distributed across a quorum of replicas**
+- Service fabric creates multiple copies of your service - replica - but one will be active at a time; if this **primary copy** goes down, service fabric will make an inactive replica active. **These inactive copies are called `replica`**.
+- **The minimum set of replica's to achieve data consistency are called `quorum`** - the size of the quorum normally is 3 nodes - **one active (primary) and 2 replicas**.  
+- When a write operation request comes in - the service fabric write to the quorum (all nodes - active and inactive) and only if all write succeeds, the request is successful.
+- Project reference for `IReliableStateManager` to work with storage: check `QuotesCollector.QuotesDomain` project and its repository implementation in `QuotesCollector.QuotesCatalog`
+  - Note: **We have used aync to make the full benefit of Service fabric to work asynchronously**
+  - **All operations require a transaction**
+  ```
+  internal sealed class QuoteRepository : IQuoteRepository
+  {
+      private const string DICTIONARY_NAME = "Quotes";
+
+      private readonly IReliableStateManager _reliableStateManager;
+
+      public QuoteRepository(IReliableStateManager stateManager)
+      {
+          _reliableStateManager = stateManager;
+      }
+
+      public async Task AddQuoteAsync(Quote quote)
+      {
+          // Get a reference to reliable dictionary
+          var quotesDictionary = await _reliableStateManager.GetOrAddAsync<IReliableDictionary<Guid, Quote>>(DICTIONARY_NAME);
+
+          // Create a transaction and insert or update quote
+          using (var tx = _reliableStateManager.CreateTransaction())
+          {
+              await quotesDictionary.AddOrUpdateAsync(tx, quote.Identity, quote, (id, value) => quote);
+              await tx.CommitAsync();
+          }
+      }
+
+      ...
+    }
+  ```
+- Using it: In the *entry method - RunAsync*, instantiate `IQuoteRepository` and use it directly for now - we can see that the data is persisted even without a storage - it is persisted in local disk
+```
+protected override async Task RunAsync(CancellationToken cancellationToken)
+{
+    _quoteRepository = new QuoteRepository(this.StateManager);
+    await _quoteRepository.AddQuoteAsync(new Quote(Guid.NewGuid(), "I will be. As soon as I have time."));
+    await _quoteRepository.AddQuoteAsync(new Quote(Guid.NewGuid(), "But you are resilient"));
+
+    var quotes = await _quoteRepository.GetQuotesAsync();
+}
+```
+
+### Creating a Web API - stateless service - API to the stateful service
+- Create new project -> Cloud -> Service Fabric Application -> Stateless ASP.Net Core -> Web API -> QuotesCollector.QuotesAPI
 
 ### References
 - [Understanding the Programming Models of Azure Service Fabric by Ivan Gavryliuk](https://app.pluralsight.com/library/courses/azure-service-fabric-programming-models/table-of-contents)

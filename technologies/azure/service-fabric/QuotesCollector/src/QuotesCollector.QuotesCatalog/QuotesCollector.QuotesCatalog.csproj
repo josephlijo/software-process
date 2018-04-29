@@ -13,4 +13,8 @@
     <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.0.480" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\QuotesCollector.QuotesDomain\QuotesCollector.QuotesDomain.csproj" />
+  </ItemGroup>
+
 </Project>
