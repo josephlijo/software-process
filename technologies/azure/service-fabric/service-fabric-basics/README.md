@@ -77,7 +77,9 @@
 ## Reliable Services
 - **Is a programming model** in Azure Service Fabric
 - Two types of **reliable services** are: **stateful reliable service** and **stateless reliable service**
-- This model helps make the application:
+- Use **Stateless service** if your microservice has no persistent state or want to manage the state in a external store such as SQL Database or Azure DocumentDB.
+- Use **Stateful service** if you want to manage your persistent state within the service itself using **reliable collections framework**. *State can be partitioned for scale and replicated across the cluster for reliability*.
+- The Reliable services programming model helps make the application:
   - **Reliable**: Service stays up even in unreliable situation or network issues. For *stateful service*, the state is preserved.
   - **Available**: Your service is *reachable and responsive*. Service fabric maintains your desired number of running copies.
   - **Scalable**: No tight coupling to hardware service instances can be increased / decreased based on needs.
@@ -91,8 +93,48 @@
   - access to **reliable storage**. See [reliable collections](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-reliable-services-reliable-collections)  
 
       ![Reliable Collections](https://docs.microsoft.com/en-us/azure/service-fabric/media/service-fabric-reliable-services-reliable-collections/reliablecollectionsevolution.png)  
-      
+
+### Creating a Service Fabric application (QuotesCollector)
+- To create a Service fabric application (make sure you have Azure Service fabric SDK installed already) - Open VS 2017, File -> New Project -> Visual C# -> Cloud -> Service Fabric Application
+- The application collects Quotes from various sources - movies, books, persons etc.; The operations - add, delete, update, edit quotes are done via an API, and the information is persisted in a storage.
+  - QuotesCollector.QuotesCatalog - A reliable service application
+- Create project - `QuotesCollector` and add a `Stateful service` project named - `QuotesCollector.QuotesCatalog`
+- Once the solution is created, we can see two types of projects:
+  - `QuotesCollector` - a **service fabric project which describes the whole application in the cluster** - it contains description of on **how to deploy the application**, **application parameters**, **services involved**.
+  - `QuotesCollector.QuotesCatalog` - is **an implementation of a service auto-generated for us to start with**
+  - It is a console application and the main method does the following:
+    - **Register the service** with the runtime by giving a **name for the service type** and tells Service fabric runtime **how to create it** when required:  
+    ```
+    ServiceRuntime.RegisterServiceAsync("QuotesCollector.QuotesCatalogType",
+                      context => new QuotesCatalog(context)).GetAwaiter().GetResult();
+    ```
+    Note: This name is in `ServiceManifest.xml` configuration and must match the string used in RegisterServiceType call in Program.cs.
+    - It then **logs the information** through a helper class `ServiceEventSource`  
+    ```
+    ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(QuotesCatalog).Name);
+    ```
+    - It then make the **process thread to sleep** so that it doesn't terminate.
+  - The entry point class is the `class QuotesCatalog : StatefulService` which is a implementation of `StatefulService` abstact class
+    - Azure Service fabric will creates an instance of it when deployed and passes it a `context`
+    - `IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()` is used to create communication endpoints which are used to listen to a request
+    - `Task RunAsync(CancellationToken cancellationToken)` is the **entrypoint** method which is called when the service is started. Note the `cancellationToken` - it is key point in service lifecycle if we want to cancel the service.
+
+### Service lifecycle
+- Stateful service has more complicated life as they use more complicated features
+```
+    During startup:
+        Services are constructed.
+        The services have an opportunity to construct and return zero or more listeners.
+        Any returned listeners are opened, allowing communication with the service.
+        The service's RunAsync method is called, allowing the service to do long-running tasks or background work.
+    During shutdown:
+        The cancellation token passed to RunAsync is canceled, and the listeners are closed.
+        After the listeners close, the service object itself is destructed.
+```
+
 ### References
 - [.NET application in Azure Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-dotnet)
 - [Try Service Fabric - using Party Clusters](https://try.servicefabric.azure.com/)
 - [Reliable Services](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-reliable-services-introduction)
+- [Reliable Collections](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-reliable-services-reliable-collections)
+- [Reliable Services lifecycle overview](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-reliable-services-lifecycle)
