@@ -120,7 +120,6 @@
     - `Task RunAsync(CancellationToken cancellationToken)` is the **entrypoint** method which is called when the service is started. Note the `cancellationToken` - it is key point in service lifecycle if we want to cancel the service.
 
 ### Service lifecycle
-- Stateful service has more complicated life as they use more complicated features
 ```
     During startup:
         Services are constructed.
@@ -132,7 +131,14 @@
         After the listeners close, the service object itself is destructed.
 ```
 
+![Startup lifecyle - Credits: Understanding the Programming Models of Azure Service Fabric by Ivan Gavryliuk, Pluralsight](./images/azure_service_fabric_startup.PNG)
+
+![Shutdown lifecyle - Credits: Understanding the Programming Models of Azure Service Fabric by Ivan Gavryliuk, Pluralsight](./images/azure_service_fabric_shutdown.PNG)
+
+- **Always respond to the cancellationToken event as possible** - otherwise service fabric will report your service as unhealthy as it didn't shutdown properly
+
 ### References
+- [Understanding the Programming Models of Azure Service Fabric by Ivan Gavryliuk](https://app.pluralsight.com/library/courses/azure-service-fabric-programming-models/table-of-contents)
 - [.NET application in Azure Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-dotnet)
 - [Try Service Fabric - using Party Clusters](https://try.servicefabric.azure.com/)
 - [Reliable Services](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-reliable-services-introduction)
