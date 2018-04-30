@@ -32,6 +32,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\QuotesCollector.QuotesAPI\QuotesCollector.QuotesAPI.csproj" />
     <ProjectReference Include="..\QuotesCollector.QuotesCatalog\QuotesCollector.QuotesCatalog.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

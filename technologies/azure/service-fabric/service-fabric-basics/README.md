@@ -190,7 +190,27 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 ```
 
 ### Creating a Web API - stateless service - API to the stateful service
-- Create new project -> Cloud -> Service Fabric Application -> Stateless ASP.Net Core -> Web API -> QuotesCollector.QuotesAPI
+- Right-click the `QuotesCollector` project  -> New Service Fabric Service -> Stateless ASP.Net Core -> Web API -> `QuotesCollector.QuotesAPI`
+- Create a `QuotesController` and test the app:
+```
+[Route("api/quotes")]
+public class QuotesController : Controller
+{
+    [HttpGet]
+    public async Task<IEnumerable<Quote>> GetAsync()
+    {
+        return new[]
+        {
+            new Quote() { Name = "Stop waiting for life to be easy (To the bone)" }
+        };
+    }
+
+    [HttpPost]
+    public void Post([FromBody]Quote quote)
+    {
+    }
+}
+```
 
 ### References
 - [Understanding the Programming Models of Azure Service Fabric by Ivan Gavryliuk](https://app.pluralsight.com/library/courses/azure-service-fabric-programming-models/table-of-contents)
