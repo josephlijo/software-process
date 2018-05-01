@@ -7,13 +7,22 @@ An effort to learn and gather software development process, principles, practice
 
 ## CI/CD - Continuous Integration, Deployment, Delivery
 
+## Software Architecture
+
+## Concurrency and Parallelism
+
+- **Concurrency** means that two or more tasks are making progress even though they might not be executing simultaneously; **Parallelism** on the other hand arise when the execution is truly simultaneous.
+
+### Patterns and Models
+- [Actor Model](./software-architecture/design-patterns/actor-pattern)
+
 ## Technologies
 
-## Docker
+### Docker
 - [Docker basics](./technologies/docker/docker-basics)
 - [Simple Dotnet Core console app on Container](./technologies/docker/docker-dotnetcoreapp)
 
-## Azure
+### Azure
 - [Service Bus and Azure Service Bus](./technologies/azure/service-bus)
 - [Service Fabric basics](./technologies/azure/service-fabric/service-fabric-basics)
 - [Dotnet Core on Linux VM](./technologies/azure/virtual-machine/netcore-on-linux-vm)
