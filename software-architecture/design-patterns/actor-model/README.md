@@ -9,8 +9,40 @@
 - Say, *Object A*, has *method A* which changes some state - in a single thread of execution the state gets changed correctly. **What if there were two threads trying to access the method at the same time?** - it can lead to inconsistent state.
 - Yes this can be **solved by using locks** which then means that we are **blocking one thread**, it can introduce **deadlocks**
 - Additionaly **locks work very well only locally**; what about **distributed system**? We **need to use distributed lock protocols** - which creates **heavy-cost and latency issues as we need to communicate over network**
+- **To summarize**:  
+
+```
+  Objects cannot guarantee Encapsulation rule and thus the internal state of the object to be maintained correctly in case of multiple threads.
+```
+
+### Shared memory concept
+-  The below code execution logic over the period from 80-90's, to multi-core architecture:  
+`var inputNumber = 11;`
+Computer concept in 80-90's with single CPU = **we are writing directly to the register**  
+With multi-core architecture, **it is written to local cache of a core - to the cache lines**  
+- In order for another core to gets this information and make changes, the cache needs to be shipped from this core to another
+- `Volatile` and `Atomic` markers (to mark it as a shared variable) is to give information that it is possible to modify this variable by multiple threads in multiple cores - but then again it is expensive as the **cache needs to be shipped and shared**.
+- **To summarize**:  
+
+```
+  There is no real shared memory anywhere - CPU core pass chunks of data (cache lines) explicitly to each other.
+  Instead of making variable as shared, more disciplined and principled approach is to keep the state local and propagate data / events across entities via messages.
+```
 
 ### Call stack
+- We **cannot take the call stack for granted** - it was invented when concurrent programming was not much of an use case
+- What happens if our *main thread delegates* some work to another *background thread by placing in some shared memory* and continue with its operation, and the *some background thread* picks up this task from the shared memory and work on it. If an **exception happens or upon completion, how does the main thread get notified?**; **Where will the exception propagate?**
+- One way to pass this error code to the main thread is to **place it where the `caller` expects it results**. What happens if the *worker thread* completely exceptions out - in this case the main thread doesn't have the error information in its call stack.
+- **To summarize**:  
+```
+  We need to introduce new task-completion of exception propagation mechanism and cannot solely depend on call stack
+```
+
+### Actor model to deal with distributed computing concerns
+- Actor model **enforces encapsulation without resorting to locks** - each actor work in single thread and holds it's own state
+- Cooperating entities interact via signals - using **actor sent message to another actor to process it** - message is executed sequentially inside an actor - only one message is processed at a time.
+- There is **no return value for a message sent**, the actor acts on it based on its current state and the **response is sent via a reply message**
+- Once the actor finish processing the message **it returns its execution** - not the response like in OOP model.
 
 ## Fundamental concepts of Actor Model
 - Like in OOP model, where **everything is an object**, the actor model adopts the philosophy that **everything is an actor**
@@ -20,7 +52,6 @@
   - **Send a finite number of messages to other actors**
   - **Create a finite number of new actors**
   - **designate the behavior to be used for the next message it receives**
-
 - Actor model **decouples the sender from the communications sent**, enabling asynchronous communication
 - The **recipient of a message are identified by an address**, sometimes called **mailing address**. Thus an actor can communicate with only those actors whose address it has which they can get from the message it receives, or if the address is for an actor that itself created.
 
@@ -65,3 +96,5 @@
 - [The actor model by Brian Storti](https://www.brianstorti.com/the-actor-model/)
 - [Actor model, Wikipedia](https://en.wikipedia.org/wiki/Actor_model)
 - [Actor model, Akka](https://doc.akka.io/docs/akka/2.5/general/actors.html)
+- [CPU Cache](https://en.wikipedia.org/wiki/CPU_cache)
+- [Introduction of Actors, Akka](https://doc.akka.io/docs/akka/2.5.3/scala/guide/actors-intro.html)
