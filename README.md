@@ -14,7 +14,7 @@ An effort to learn and gather software development process, principles, practice
 - **Concurrency** means that two or more tasks are making progress even though they might not be executing simultaneously; **Parallelism** on the other hand arise when the execution is truly simultaneous.
 
 ### Patterns and Models
-- [Actor Model](./software-architecture/design-patterns/actor-pattern)
+- [Actor Model](./software-architecture/design-patterns/actor-model)
 
 ## Technologies
 
