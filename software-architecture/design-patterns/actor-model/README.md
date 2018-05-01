@@ -12,7 +12,8 @@
 - **To summarize**:  
 
 ```
-  Objects cannot guarantee Encapsulation rule and thus the internal state of the object to be maintained correctly in case of multiple threads.
+  Objects cannot guarantee Encapsulation rule and thus the internal state of the object
+  to be maintained correctly in case of multiple threads.
 ```
 
 ### Shared memory concept
@@ -26,7 +27,8 @@ With multi-core architecture, **it is written to local cache of a core - to the 
 
 ```
   There is no real shared memory anywhere - CPU core pass chunks of data (cache lines) explicitly to each other.
-  Instead of making variable as shared, more disciplined and principled approach is to keep the state local and propagate data / events across entities via messages.
+  Instead of making variable as shared, more disciplined and principled approach is to keep the state local and
+  propagate data / events across entities via messages.
 ```
 
 ### Call stack
@@ -35,7 +37,7 @@ With multi-core architecture, **it is written to local cache of a core - to the 
 - One way to pass this error code to the main thread is to **place it where the `caller` expects it results**. What happens if the *worker thread* completely exceptions out - in this case the main thread doesn't have the error information in its call stack.
 - **To summarize**:  
 ```
-  We need to introduce new task-completion of exception propagation mechanism and cannot solely depend on call stack
+  We need to introduce new task-completion or exception propagation mechanism and cannot solely depend on call stack
 ```
 
 ### Actor model to deal with distributed computing concerns
