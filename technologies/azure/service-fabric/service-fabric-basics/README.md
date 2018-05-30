@@ -212,6 +212,11 @@ public class QuotesController : Controller
 }
 ```
 
+### Connecting services together
+- Let's assume that we have a 3 node cluster and two applications - one Stateful, and one Stateless
+- Service fabric will have both applications in 3 nodes, with all three Stateless service active in all three, but **only one Stateful service will be active** in any of the node (since it has state), the other two nodes will have this stateful service, but in **passive mode**
+-
+
 ### References
 - [Understanding the Programming Models of Azure Service Fabric by Ivan Gavryliuk](https://app.pluralsight.com/library/courses/azure-service-fabric-programming-models/table-of-contents)
 - [.NET application in Azure Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-dotnet)
